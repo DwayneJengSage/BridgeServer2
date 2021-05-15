@@ -92,6 +92,10 @@ public interface Study extends BridgeEntity, StudyIdentifier {
     /** @see #isAutoVerificationEmailSuppressed */
     void setAutoVerificationEmailSuppressed(boolean autoVerificationEmailSuppressed);
 
+    boolean isExporter3Enabled();
+
+    void setExporter3Enabled(boolean exporter3Enabled);
+
     /** List of FitBit scopes that are configured for this study. */
     List<String> getFitBitScopes();
 

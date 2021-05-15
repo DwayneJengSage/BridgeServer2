@@ -59,6 +59,7 @@ public final class DynamoStudy implements Study {
     private String identifier;
     private Map<String, String> automaticCustomEvents;
     private boolean autoVerificationEmailSuppressed;
+    private boolean exporter3Enabled;
     private List<String> fitBitScopes;
     private boolean participantIpLockingEnabled;
     private boolean studyIdExcludedInExport;
@@ -202,6 +203,18 @@ public final class DynamoStudy implements Study {
     @Override
     public void setAutoVerificationEmailSuppressed(boolean autoVerificationEmailSuppressed) {
         this.autoVerificationEmailSuppressed = autoVerificationEmailSuppressed;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isExporter3Enabled() {
+        return exporter3Enabled;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setExporter3Enabled(boolean exporter3Enabled) {
+        this.exporter3Enabled = exporter3Enabled;
     }
 
     /** {@inheritDoc} */
@@ -634,7 +647,7 @@ public final class DynamoStudy implements Study {
     @Override
     public int hashCode() {
         return Objects.hash(name, shortName, sponsorName, identifier, automaticCustomEvents,
-                autoVerificationEmailSuppressed, fitBitScopes, participantIpLockingEnabled, studyIdExcludedInExport,
+                autoVerificationEmailSuppressed, exporter3Enabled, fitBitScopes, participantIpLockingEnabled, studyIdExcludedInExport,
                 supportEmail, synapseDataAccessTeamId, synapseProjectId, technicalEmail, usesCustomExportSchedule,
                 uploadMetadataFieldDefinitions, uploadValidationStrictness, consentNotificationEmail,
                 consentNotificationEmailVerified, minAgeOfConsent, accountLimit, version, active, profileAttributes,
@@ -656,6 +669,7 @@ public final class DynamoStudy implements Study {
         return (Objects.equals(identifier, other.identifier)
                 && Objects.equals(automaticCustomEvents, other.automaticCustomEvents)
                 && Objects.equals(autoVerificationEmailSuppressed, other.autoVerificationEmailSuppressed)
+                && Objects.equals(exporter3Enabled, other.exporter3Enabled)
                 && Objects.equals(fitBitScopes, other.fitBitScopes)
                 && Objects.equals(participantIpLockingEnabled, other.participantIpLockingEnabled)
                 && Objects.equals(studyIdExcludedInExport, other.studyIdExcludedInExport)
@@ -704,7 +718,7 @@ public final class DynamoStudy implements Study {
     public String toString() {
         return String.format(
                 "DynamoStudy [name=%s, shortName=%s, active=%s, sponsorName=%s, identifier=%s, automaticCustomEvents=%s"
-                        + "autoVerificationEmailSuppressed=%b, minAgeOfConsent=%s, participantIpLockingEnabled=%b, "
+                        + "autoVerificationEmailSuppressed=%b, exporter3Enabled=%b, minAgeOfConsent=%s, participantIpLockingEnabled=%b, "
                         + "studyIdExcludedInExport=%b, supportEmail=%s, synapseDataAccessTeamId=%s, synapseProjectId=%s, "
                         + "technicalEmail=%s, uploadValidationStrictness=%s, consentNotificationEmail=%s, "
                         + "consentNotificationEmailVerified=%s, version=%s, userProfileAttributes=%s, taskIdentifiers=%s, "
@@ -716,7 +730,7 @@ public final class DynamoStudy implements Study {
                         + "reauthenticationEnabled=%s, autoVerificationPhoneSuppressed=%s, verifyChannelOnSignInEnabled=%s, "
                         + "defaultTemplates=%s]",
                 name, shortName, active, sponsorName, identifier, automaticCustomEvents,
-                autoVerificationEmailSuppressed, minAgeOfConsent, participantIpLockingEnabled, studyIdExcludedInExport,
+                autoVerificationEmailSuppressed, exporter3Enabled, minAgeOfConsent, participantIpLockingEnabled, studyIdExcludedInExport,
                 supportEmail, synapseDataAccessTeamId, synapseProjectId, technicalEmail, uploadValidationStrictness,
                 consentNotificationEmail, consentNotificationEmailVerified, version, profileAttributes, taskIdentifiers,
                 activityEventKeys, dataGroups, passwordPolicy, strictUploadValidationEnabled, healthCodeExportEnabled,
